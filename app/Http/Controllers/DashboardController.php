@@ -2,12 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Buku;
+use App\Models\Kategori;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-
-class BukuController extends Controller
+class DashboardController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,11 +26,11 @@ class BukuController extends Controller
     public function index()
     {
         $data = [
-            'title' => 'Daftar Buku',
-            'buku' => Buku::all(),
+            'count_kategori' => Kategori::count(),
+            'count_user' => User::count()
         ];
-    
-        return view('buku.index', $data)->with('i');
+
+        return view('home', $data);
     }
 
     /**
@@ -30,10 +40,7 @@ class BukuController extends Controller
      */
     public function create()
     {
-        $data = [
-            'title' => 'Daftar buku'
-        ];
-        return view('buku.index', $data);
+        //
     }
 
     /**
@@ -44,28 +51,16 @@ class BukuController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'nama' => 'required'
-        ]);
-
-        # olah sebelum insert
-        $insert = [
-            'nama' => $request->input('nama'),
-            'dibuat_oleh'=>'Auth'::user()->name,
-        ];
-        Buku::create($insert);
-
-        return redirect()->route('buku.index')->with('success', 'Berhasil tambah kategori');
-        
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Buku  $buku
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Buku $buku)
+    public function show($id)
     {
         //
     }
@@ -73,10 +68,10 @@ class BukuController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Buku  $buku
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Buku $buku)
+    public function edit($id)
     {
         //
     }
@@ -85,10 +80,10 @@ class BukuController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Buku  $buku
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Buku $buku)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -96,10 +91,10 @@ class BukuController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Buku  $buku
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Buku $buku)
+    public function destroy($id)
     {
         //
     }

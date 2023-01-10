@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'ELIB SMK 1 BANGSRI',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -253,10 +253,10 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'dashboard',
     'logout_url' => 'logout',
     'login_url' => 'login',
-    'register_url' => 'register',
+    'register_url' => '',
     'password_reset_url' => 'password/reset',
     'password_email_url' => 'password/email',
     'profile_url' => true,
@@ -308,7 +308,7 @@ return [
         ],
         [
             'text' => 'Dashboard',
-            'url'  => 'home',
+            'url'  => 'dashboard',
             'icon' => 'fas fa-tachometer-alt',
         ],
         [
@@ -475,12 +475,12 @@ return [
             ],
         ],
         'Sweetalert2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdn.jsdelivr.net/npm/sweetalert2@8',
+                    'asset' => true,
+                    'location' => '//cdn.jsdelivr.net/npm/sweetalert2@11',
                 ],
             ],
         ],
